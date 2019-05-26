@@ -62,6 +62,12 @@
         android:key="gestures"
         android:title="@string/gestures_title" >
 
+        <com.elegant.support.preferences.SystemSettingSwitchPreference
+            android:key="doze_trigger_doubletap"
+            android:defaultValue="false"
+            android:title="@string/doze_double_tap_title"
+            android:summary="@string/doze_double_tap_summary" />
+
         <com.elegant.support.preferences.SwitchPreference
             android:key="pick_up"
             android:defaultValue="false"

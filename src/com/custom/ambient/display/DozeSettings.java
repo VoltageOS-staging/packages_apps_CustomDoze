@@ -22,6 +22,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
+import androidx.preference.PreferenceCategory;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
@@ -65,6 +66,10 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         private Context mContext;
         private ActionBar actionBar;
 
+        private static final String KEY_CATEGORY_DOUBLE_TAP = "double_tap";
+
+        private PreferenceCategory mDoubleTapCategory;
+
         private SwitchPreference mAoDPreference;
         private SwitchPreference mAmbientDisplayPreference;
         private SwitchPreference mPickUpPreference;
@@ -74,6 +79,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         private SystemSettingSwitchPreference mMusicTickerPreference;
         private SystemSettingSeekBarPreference mDozeBrightness;
         private SystemSettingSeekBarPreference mPulseBrightness;
+        private SystemSettingSwitchPreference mDoubleTapPreference;
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -92,8 +98,21 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             mDozeOnChargePreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
 
+            mDoubleTapCategory =
+                (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
+            mDoubleTapPreference =
+                (SystemSettingSwitchPreference) findPreference(Utils.DOUBLE_TAP_KEY);
+
+            if (Utils.isTapToWakeAvailable(mContext)) {
+                mDoubleTapPreference.setOnPreferenceChangeListener(this);
+            } else {
+                getPreferenceScreen().removePreference(mDoubleTapCategory);
+            }
+
             mMusicTickerPreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
+            mDoubleTapCategory =
+                (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
 
             if (Utils.isAoDAvailable(mContext)) {
                 mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
@@ -204,6 +223,12 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
                 Settings.System.putInt(mContext.getContentResolver(),
                         Settings.System.DOZE_BRIGHTNESS, value);
                 return true;
+            } else if (Utils.DOUBLE_TAP_KEY.equals(key)) {
+                if (!Utils.isTapToWakeEnabled(mContext)); {
+                    Settings.Secure.putInt(mContext.getContentResolver(),
+                            Settings.Secure.DOUBLE_TAP_TO_WAKE, 1);
+                }
+                return true;
             }
             return false;
         }
@@ -219,6 +244,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             mMusicTickerPreference.setEnabled(!aodEnabled);
             mDozeBrightness.setEnabled(aodEnabled || aodChargeEnabled);
             mPulseBrightness.setEnabled(!aodEnabled);
+            mDoubleTapPreference.setEnabled(!aodEnabled);
         }
 
         @Override
