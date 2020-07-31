@@ -39,7 +39,6 @@ public final class Utils {
     protected static final String AOD_CHARGE_KEY = "doze_on_charge";
     protected static final String AMBIENT_DISPLAY_KEY = "ambient_display";
     protected static final String PICK_UP_KEY = "pick_up";
-    protected static final String GESTURE_RAISE_TO_WAKE_KEY = "gesture_raise_to_wake";
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
     protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
     protected static final String DOUBLE_TAP_KEY = "doze_trigger_doubletap";
@@ -114,11 +113,6 @@ public final class Utils {
             com.android.internal.R.bool.config_supportDoubleTapWake);
     }
 
-    protected static boolean isRaiseToWakeEnabled(Context context) {
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.CUSTOM_AMBIENT_RAISE_GESTURE, 0) != 0;
-    }
-
     protected static boolean tiltGestureEnabled(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.CUSTOM_AMBIENT_TILT_GESTURE, 0) != 0;
@@ -160,13 +154,6 @@ public final class Utils {
         return enabled;
     }
 
-    protected static boolean enableRaiseToWake(boolean enable, Context context) {
-        boolean enabled = Settings.System.putInt(context.getContentResolver(),
-                Settings.System.CUSTOM_AMBIENT_RAISE_GESTURE, enable ? 1 : 0);
-        manageService(context);
-        return enabled;
-    }
-
     protected static boolean enableHandWave(boolean enable, Context context) {
         boolean enabled = Settings.System.putInt(context.getContentResolver(),
                 Settings.System.CUSTOM_AMBIENT_HANDWAVE_GESTURE, enable ? 1 : 0);
@@ -190,13 +177,9 @@ public final class Utils {
     }
 
     protected static void launchDozePulse(Context context) {
-        final boolean fodEnabled = Settings.System.getInt(context.getContentResolver(),
-                Settings.System.SCREEN_OFF_FOD, 0) != 0;
-        if (!fodEnabled) {
-            if (DEBUG) Log.d(TAG, "Launch doze pulse");
-            context.sendBroadcastAsUser(new Intent(DOZE_INTENT),
-                    new UserHandle(UserHandle.USER_CURRENT));
-        }
+        if (DEBUG) Log.d(TAG, "Launch doze pulse");
+        context.sendBroadcastAsUser(new Intent(DOZE_INTENT),
+                new UserHandle(UserHandle.USER_CURRENT));
     }
 
     protected static boolean sensorsEnabled(Context context) {
