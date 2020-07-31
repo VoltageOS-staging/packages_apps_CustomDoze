@@ -41,7 +41,6 @@ public final class Utils {
     protected static final String PICK_UP_KEY = "pick_up";
     protected static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
     protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
-    protected static final String DOUBLE_TAP_KEY = "doze_trigger_doubletap";
     protected static final String MUSIC_TICKER_KEY = "pulse_on_new_tracks";
     protected static final String DOZE_BRIGHTNESS_KEY = "ambient_doze_brightness";
     protected static final String PULSE_BRIGHTNESS_KEY = "ambient_pulse_brightness";
@@ -89,7 +88,6 @@ public final class Utils {
         boolean enabled = Settings.Secure.putInt(context.getContentResolver(),
                 Settings.Secure.DOZE_ALWAYS_ON, enable ? 1 : 0);
         if (enable) {
-            enableDoubleTap(false, context);
             enablePickUp(false, context);
             enableHandWave(false, context);
             enablePocketMode(false, context);
@@ -101,16 +99,6 @@ public final class Utils {
     protected static boolean isDozeEnabled(Context context) {
         return Settings.Secure.getInt(context.getContentResolver(),
                 Settings.Secure.DOZE_ENABLED, 1) != 0;
-    }
-
-    protected static boolean isTapToWakeEnabled(Context context) {
-        return Settings.Secure.getInt(context.getContentResolver(),
-                Settings.Secure.DOUBLE_TAP_TO_WAKE, 0) != 0;
-    }
-
-    protected static boolean isTapToWakeAvailable(Context context) {
-        return context.getResources().getBoolean(
-            com.android.internal.R.bool.config_supportDoubleTapWake);
     }
 
     protected static boolean tiltGestureEnabled(Context context) {
@@ -138,12 +126,6 @@ public final class Utils {
         boolean enabled = Settings.Secure.putInt(context.getContentResolver(),
                 Settings.Secure.DOZE_ENABLED, enable ? 1 : 0);
         // don't start the service, for notifications pulse we don't need the proximity sensor check here
-        return enabled;
-    }
-
-    protected static boolean enableDoubleTap(boolean enable, Context context) {
-        boolean enabled = Settings.System.putInt(context.getContentResolver(),
-                Settings.System.DOZE_TRIGGER_DOUBLETAP, enable ? 1 : 0);
         return enabled;
     }
 

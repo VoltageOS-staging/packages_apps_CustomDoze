@@ -71,7 +71,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         private SwitchPreference mHandwavePreference;
         private SwitchPreference mPocketPreference;
         private SystemSettingSwitchPreference mDozeOnChargePreference;
-        private SystemSettingSwitchPreference mDoubleTapPreference;
         private SystemSettingSwitchPreference mMusicTickerPreference;
         private SystemSettingSeekBarPreference mDozeBrightness;
         private SystemSettingSeekBarPreference mPulseBrightness;
@@ -92,9 +91,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
 
             mDozeOnChargePreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
-
-            mDoubleTapPreference =
-                (SystemSettingSwitchPreference) findPreference(Utils.DOUBLE_TAP_KEY);
 
             mMusicTickerPreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
@@ -198,13 +194,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
                 mPocketPreference.setChecked(value);
                 Utils.enablePocketMode(value, mContext);
                 return true;
-            } else if (Utils.DOUBLE_TAP_KEY.equals(key)) {
-                if (Utils.isTapToWakeAvailable(mContext) &&
-                        !Utils.isTapToWakeEnabled(mContext)); {
-                    Settings.Secure.putInt(mContext.getContentResolver(),
-                            Settings.Secure.DOUBLE_TAP_TO_WAKE, 1);
-                }
-                return true;
             } else if (preference == mPulseBrightness) {
                 int value = (Integer) newValue;
                 Settings.System.putInt(mContext.getContentResolver(),
@@ -227,7 +216,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             mHandwavePreference.setEnabled(!aodEnabled);
             mPocketPreference.setEnabled(!aodEnabled);
             mDozeOnChargePreference.setEnabled(!aodEnabled);
-            mDoubleTapPreference.setEnabled(!aodEnabled);
             mMusicTickerPreference.setEnabled(!aodEnabled);
             mDozeBrightness.setEnabled(aodEnabled || aodChargeEnabled);
             mPulseBrightness.setEnabled(!aodEnabled);
