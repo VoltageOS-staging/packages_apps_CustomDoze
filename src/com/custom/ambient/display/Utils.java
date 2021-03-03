@@ -76,8 +76,8 @@ public final class Utils {
     }
 
     protected static boolean isAoDChargeEnabled(Context context) {
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.DOZE_ON_CHARGE, 0) != 0;
+        return Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOZE_ON_CHARGE, 0) != 0;
     }
 
     protected static boolean isAoDAvailable(Context context) {
@@ -128,8 +128,8 @@ public final class Utils {
     }
 
     protected static boolean enableAoDCharge(boolean enable, Context context) {
-        boolean enabled = Settings.System.putInt(context.getContentResolver(),
-                Settings.System.DOZE_ON_CHARGE, enable ? 1 : 0);
+        boolean enabled = Settings.Secure.putInt(context.getContentResolver(),
+                Settings.Secure.DOZE_ON_CHARGE, enable ? 1 : 0);
         return enabled;
     }
 

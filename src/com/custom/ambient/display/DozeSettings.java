@@ -28,9 +28,10 @@ import android.view.MenuItem;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
-import com.elegant.support.preferences.SwitchPreference;
-import com.elegant.support.preferences.SystemSettingSeekBarPreference;
-import com.elegant.support.preferences.SystemSettingSwitchPreference;
+import com.tenx.support.preferences.SwitchPreference;
+import com.tenx.support.preferences.SystemSettingSeekBarPreference;
+import com.tenx.support.preferences.SystemSettingSwitchPreference;
+import com.tenx.support.preferences.SecureSettingSwitchPreference;
 
 public class DozeSettings extends PreferenceActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
@@ -75,7 +76,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         private SwitchPreference mPickUpPreference;
         private SwitchPreference mHandwavePreference;
         private SwitchPreference mPocketPreference;
-        private SystemSettingSwitchPreference mDozeOnChargePreference;
+        private SecureSettingSwitchPreference mDozeOnChargePreference;
         private SystemSettingSwitchPreference mMusicTickerPreference;
         private SystemSettingSeekBarPreference mDozeBrightness;
         private SystemSettingSeekBarPreference mPulseBrightness;
@@ -96,7 +97,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
                 (SwitchPreference) findPreference(Utils.AOD_KEY);
 
             mDozeOnChargePreference =
-                (SystemSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
+                (SecureSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
 
             mDoubleTapCategory =
                 (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
