@@ -24,6 +24,10 @@
     <string name="ambient_battery_percent_title">Battery level</string> 
     <string name="ambient_battery_percent_summary">Show battery percent on the bottom of the screen</string>
 
+    <!-- Battery temperature -->
+    <string name="ambient_battery_temperature_title">Battery temperature</string>
+    <string name="ambient_battery_temperature_summary">Show battery temperature along with the battery percent</string>
+
     <!-- Always on display -->
     <string name="aod_setting_title">Always on</string>
     <string name="aod_setting_summary">Show time, notification icons and other info</string>
