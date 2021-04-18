@@ -29,6 +29,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
 import com.tenx.support.preferences.SwitchPreference;
+import com.tenx.support.preferences.SecureSettingMasterSwitchPreference;
 import com.tenx.support.preferences.SystemSettingSeekBarPreference;
 import com.tenx.support.preferences.SystemSettingSwitchPreference;
 import com.tenx.support.preferences.SecureSettingSwitchPreference;
@@ -71,7 +72,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
 
         private PreferenceCategory mDoubleTapCategory;
 
-        private SwitchPreference mAoDPreference;
+        private SecureSettingMasterSwitchPreference mAoDPreference;
         private SwitchPreference mAmbientDisplayPreference;
         private SwitchPreference mPickUpPreference;
         private SwitchPreference mHandwavePreference;
@@ -94,7 +95,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             actionBar.setDisplayHomeAsUpEnabled(true);
 
             mAoDPreference =
-                (SwitchPreference) findPreference(Utils.AOD_KEY);
+                (SecureSettingMasterSwitchPreference) findPreference(Utils.AOD_KEY);
 
             mDozeOnChargePreference =
                 (SecureSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
@@ -115,13 +116,12 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             mDoubleTapCategory =
                 (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
 
+            updateMasterPrefs();
+
             if (Utils.isAoDAvailable(mContext)) {
-                mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
-                mAoDPreference.setOnPreferenceChangeListener(this);
                 mDozeOnChargePreference.setChecked(Utils.isAoDChargeEnabled(mContext));
                 mDozeOnChargePreference.setOnPreferenceChangeListener(this);
             } else {
-                mAoDPreference.setVisible(false);
                 mDozeOnChargePreference.setVisible(false);
             }
 
@@ -176,6 +176,15 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
 
             if (mAoDPreference == null) return;
             setPrefs();
+        }
+
+        private void updateMasterPrefs() {
+            if (Utils.isAoDAvailable(mContext)) {
+                mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
+                mAoDPreference.setOnPreferenceChangeListener(this);
+            } else {
+                mAoDPreference.setVisible(false);
+            }
         }
 
         @Override
@@ -256,6 +265,13 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         @Override
         public void onResume() {
             super.onResume();
+            updateMasterPrefs();
+        }
+
+        @Override
+        public void onPause() {
+            super.onPause();
+            updateMasterPrefs();
         }
 
         @Override
