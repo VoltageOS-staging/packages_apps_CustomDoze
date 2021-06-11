@@ -27,6 +27,12 @@
     <string name="ambient_battery_temperature_title">Battery temperature only</string>
     <string name="ambient_battery_both_title">Both (Battery level &amp; Temperature)</string>
 
+    <!-- Ambient Bolt -->
+    <string name="ambient_bolt_title">Bolt</string>
+    <string name="ambient_bolt_disabled">Hidden</string>
+    <string name="ambient_bolt_white">White</string>
+    <string name="ambient_bolt_yellow">Yellow</string>
+
     <!-- Always on display -->
     <string name="aod_setting_title">Always on</string>
     <string name="aod_setting_summary">Show time, notification icons and other info</string>
