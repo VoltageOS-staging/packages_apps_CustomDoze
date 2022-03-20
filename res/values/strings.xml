@@ -26,6 +26,8 @@
     <string name="ambient_battery_percent_title">Battery level only</string> 
     <string name="ambient_battery_temperature_title">Battery temperature only</string>
     <string name="ambient_battery_both_title">Both (Battery level &amp; Temperature)</string>
+    <string name="ambient_battery_cpu_temperature_title">Battery level &amp; CPU Temperature)</string>
+    <string name="ambient_battery_cpu_battery_temperature_title">Battery level, batetry temperature &amp; CPU Temperature)</string>
 
     <!-- Ambient Bolt -->
     <string name="ambient_bolt_title">Bolt</string>
