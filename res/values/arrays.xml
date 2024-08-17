@@ -17,11 +17,9 @@
 
     <!-- Ambient bottom stuff -->
     <string-array name="ambient_bottom_entries" translatable="false">
-        <item>@string/ambient_bottom_hidden_title</item>
+        <item>@string/ambient_battery_disable_title</item>
         <item>@string/ambient_battery_percent_title</item>
-        <item>@string/ambient_battery_temperature_title</item>
         <item>@string/ambient_battery_both_title</item>
-        <item>@string/ambient_battery_cpu_temperature_title</item>
         <item>@string/ambient_battery_cpu_battery_temperature_title</item>
     </string-array>
 
@@ -30,21 +28,6 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
-
-    <!-- Ambient bolt -->
-    <string-array name="ambient_bolt_entries" translatable="false">
-        <item>@string/ambient_bolt_disabled</item>
-        <item>@string/ambient_bolt_white</item>
-        <item>@string/ambient_bolt_yellow</item>
-    </string-array>
-
-    <string-array name="ambient_bolt_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
     </string-array>
 
     <!-- AOD Schedule -->

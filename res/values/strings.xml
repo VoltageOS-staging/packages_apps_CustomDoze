@@ -22,18 +22,10 @@
 
     <!-- Ambient Battery percent & Temperature -->
     <string name="ambient_bottom_title">Bottom</string>
-    <string name="ambient_bottom_hidden_title">Hidden</string>
-    <string name="ambient_battery_percent_title">Battery level only</string> 
-    <string name="ambient_battery_temperature_title">Battery temperature only</string>
-    <string name="ambient_battery_both_title">Both (Battery level &amp; Temperature)</string>
-    <string name="ambient_battery_cpu_temperature_title">Battery level &amp; CPU Temperature)</string>
-    <string name="ambient_battery_cpu_battery_temperature_title">Battery level, batetry temperature &amp; CPU Temperature)</string>
-
-    <!-- Ambient Bolt -->
-    <string name="ambient_bolt_title">Bolt</string>
-    <string name="ambient_bolt_disabled">Hidden</string>
-    <string name="ambient_bolt_white">White</string>
-    <string name="ambient_bolt_yellow">Yellow</string>
+    <string name="ambient_battery_disable_title">Disabled</string>
+    <string name="ambient_battery_percent_title">Battery level</string> 
+    <string name="ambient_battery_both_title">Battery (Level &amp; temperature)</string>
+    <string name="ambient_battery_cpu_battery_temperature_title">Battery level, temperature (Battery &amp; CPU)</string>
 
     <!-- Always on display -->
     <string name="aod_setting_title">Always on</string>
@@ -83,5 +75,9 @@
     <string name="always_on_display_schedule_custom">Turns on at custom time</string>
     <string name="always_on_display_start_time_title">Start time</string>
     <string name="always_on_display_end_time_title">End time</string>
+
+    <!-- AOD schedule -->
+    <string name="aod_schedule_title">AOD Schedule</string>
+    <string name="aod_schedule_summary">Set your Always-On Display schedule</string>
 
 </resources>
