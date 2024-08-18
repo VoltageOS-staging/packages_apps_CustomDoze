@@ -27,6 +27,10 @@
     <string name="ambient_battery_both_title">Battery (Level &amp; temperature)</string>
     <string name="ambient_battery_cpu_battery_temperature_title">Battery level, temperature (Battery &amp; CPU)</string>
 
+    <!-- Ambient settings show icon -->
+    <string name="display_icon_title">Icons</string>
+    <string name="display_icon_summary">Display icons along with level &amp; temperature</string>
+
     <!-- Always on display -->
     <string name="aod_setting_title">Always on</string>
     <string name="aod_setting_summary">Show time, notification icons and other info</string>
