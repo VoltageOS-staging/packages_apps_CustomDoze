@@ -17,14 +17,16 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/ambient_display_title"
+    xmlns:tenx="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
+    <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="doze_elements"
         android:title="@string/doze_elements_title" >
 
         <com.tenx.support.preferences.SystemSettingListPreference
             android:key="ambient_show_settings"
+            tenx:position="top"
             android:title="@string/ambient_bottom_title"
             android:entries="@array/ambient_bottom_entries"
             android:entryValues="@array/ambient_bottom_values"
@@ -33,18 +35,20 @@
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="ambient_show_settings_icons"
+            tenx:position="bottom"
             android:title="@string/display_icon_title"
             android:summary="@string/display_icon_summary"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
+    </com.tenx.support.preferences.TenXPreferenceCategory>
 
-    <PreferenceCategory
+    <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="doze_trigger_key"
         android:title="@string/doze_trigger_title" >
 
         <com.tenx.support.preferences.SwitchPreferenceCompat
             android:key="always_on_ambient"
+            tenx:position="top"
             android:defaultValue="false"
             android:title="@string/aod_setting_title"
             android:summary="@string/aod_setting_summary" />
@@ -62,58 +66,66 @@
 
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="doze_on_charge"
+            tenx:position="middle"
             android:defaultValue="false"
             android:title="@string/doze_on_charge_title"
             android:summary="@string/doze_on_charge_summary" />
 
         <com.tenx.support.preferences.SwitchPreferenceCompat
             android:key="ambient_display"
+            tenx:position="middle"
             android:defaultValue="true"
             android:title="@string/ambient_display_notifications"
             android:summary="@string/ambient_display_summary" />
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="pulse_on_new_tracks"
+            tenx:position="bottom"
             android:defaultValue="true"
             android:title="@string/pulse_on_new_tracks_title"
             android:summary="@string/pulse_on_new_tracks_summary" />
-    </PreferenceCategory>
+    </com.tenx.support.preferences.TenXPreferenceCategory>
 
-    <PreferenceCategory
+    <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="gestures"
         android:title="@string/gestures_title" >
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="doze_trigger_doubletap"
+            tenx:position="top"
             android:defaultValue="false"
             android:title="@string/doze_double_tap_title"
             android:summary="@string/doze_double_tap_summary" />
 
         <com.tenx.support.preferences.SwitchPreferenceCompat
             android:key="pick_up"
+            tenx:position="middle"
             android:defaultValue="false"
             android:title="@string/pick_up_title"
             android:summary="@string/pick_up_summary" />
 
         <com.tenx.support.preferences.SwitchPreferenceCompat
             android:key="gesture_hand_wave"
+            tenx:position="middle"
             android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
             android:summary="@string/hand_wave_gesture_summary" />
 
         <com.tenx.support.preferences.SwitchPreferenceCompat
             android:key="gesture_pocket"
+            tenx:position="bottom"
             android:defaultValue="false"
             android:title="@string/pocket_gesture_title"
             android:summary="@string/pocket_gesture_summary" />
-    </PreferenceCategory>
+    </com.tenx.support.preferences.TenXPreferenceCategory>
 
-    <PreferenceCategory
+    <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="brightness"
         android:title="@string/brightness_title" >
 
         <com.tenx.support.preferences.SystemSettingSeekBarPreference
             android:key="ambient_doze_brightness"
+            tenx:position="top"
             android:title="@string/ambient_doze_brightness_title"
             android:max="255"
             settings:min="1"
@@ -121,6 +133,7 @@
 
         <com.tenx.support.preferences.SystemSettingSeekBarPreference
             android:key="ambient_pulse_brightness"
+            tenx:position="middle"
             android:title="@string/ambient_pulse_brightness_title"
             android:max="255"
             settings:min="1"
@@ -128,8 +141,9 @@
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
             android:key="doze_brightness_force"
+            tenx:position="bottom"
             android:title="@string/doze_brightness_force_title"
             android:summary="@string/doze_brightness_force_summary"
             android:defaultValue="false" />
-    </PreferenceCategory>
+    </com.tenx.support.preferences.TenXPreferenceCategory>
 </PreferenceScreen>
