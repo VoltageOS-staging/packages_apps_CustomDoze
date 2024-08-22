@@ -42,6 +42,9 @@
 
     </com.tenx.support.preferences.TenXPreferenceCategory>
 
+    <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/doze_divider" />
+
     <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="doze_trigger_key"
         android:title="@string/doze_trigger_title" >
@@ -86,6 +89,9 @@
             android:summary="@string/pulse_on_new_tracks_summary" />
     </com.tenx.support.preferences.TenXPreferenceCategory>
 
+    <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/doze_divider" />
+
     <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="gestures"
         android:title="@string/gestures_title" >
@@ -118,6 +124,9 @@
             android:title="@string/pocket_gesture_title"
             android:summary="@string/pocket_gesture_summary" />
     </com.tenx.support.preferences.TenXPreferenceCategory>
+
+    <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/doze_divider" />
 
     <com.tenx.support.preferences.TenXPreferenceCategory
         android:key="brightness"
