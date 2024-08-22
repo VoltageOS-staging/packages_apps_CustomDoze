@@ -16,14 +16,12 @@
 
 package com.custom.ambient.display;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.UserHandle;
-import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -34,10 +32,13 @@ import androidx.preference.DropDownPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
 
-public class AODSchedule extends PreferenceActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
+public class AODSchedule extends CollapsingToolbarBaseActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class AODSchedule extends PreferenceActivity implements PreferenceFragmen
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, getNewFragment())
+                    .replace(R.id.content_frame, getNewFragment())
                     .commit();
         }
     }
@@ -60,7 +61,7 @@ public class AODSchedule extends PreferenceActivity implements PreferenceFragmen
         Fragment instantiate = Fragment.instantiate(this, preference.getFragment(),
             preference.getExtras());
         getFragmentManager().beginTransaction().replace(
-                android.R.id.content, instantiate).addToBackStack(preference.getKey()).commit();
+                R.id.content_frame, instantiate).addToBackStack(preference.getKey()).commit();
 
         return true;
     }
@@ -79,7 +80,6 @@ public class AODSchedule extends PreferenceActivity implements PreferenceFragmen
         private static final String TILL_PREF_KEY = "doze_always_on_auto_till";
 
         private Context mContext;
-        private ActionBar actionBar;
 
         private DropDownPreference mModePref;
         private Preference mSincePref;
@@ -91,10 +91,6 @@ public class AODSchedule extends PreferenceActivity implements PreferenceFragmen
             setPreferencesFromResource(R.xml.always_on_display_schedule, rootKey);
 
             mContext = getActivity();
-
-            actionBar = getActivity().getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
 
             ContentResolver resolver = getActivity().getContentResolver();
 
@@ -225,15 +221,5 @@ public class AODSchedule extends PreferenceActivity implements PreferenceFragmen
         public void onDestroy() {
             super.onDestroy();
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

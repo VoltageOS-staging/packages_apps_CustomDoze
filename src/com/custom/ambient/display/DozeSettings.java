@@ -16,11 +16,9 @@
 
 package com.custom.ambient.display;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.provider.Settings;
 import androidx.preference.PreferenceCategory;
 import android.view.MenuItem;
@@ -28,12 +26,15 @@ import android.view.MenuItem;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
+
 import com.tenx.support.preferences.SwitchPreferenceCompat;
 import com.tenx.support.preferences.SystemSettingSeekBarPreference;
 import com.tenx.support.preferences.SystemSettingSwitchPreference;
 import com.tenx.support.preferences.SecureSettingSwitchPreference;
 
-public class DozeSettings extends PreferenceActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
+public class DozeSettings extends CollapsingToolbarBaseActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, getNewFragment())
+                    .replace(R.id.content_frame, getNewFragment())
                     .commit();
         }
     }
@@ -56,7 +57,7 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         Fragment instantiate = Fragment.instantiate(this, preference.getFragment(),
             preference.getExtras());
         getFragmentManager().beginTransaction().replace(
-                android.R.id.content, instantiate).addToBackStack(preference.getKey()).commit();
+                R.id.content_frame, instantiate).addToBackStack(preference.getKey()).commit();
 
         return true;
     }
@@ -65,7 +66,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             implements Preference.OnPreferenceChangeListener {
 
         private Context mContext;
-        private ActionBar actionBar;
 
         private static final String KEY_CATEGORY_DOUBLE_TAP = "double_tap";
 
@@ -88,10 +88,6 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
             setPreferencesFromResource(R.xml.doze_settings, rootKey);
 
             mContext = getActivity();
-
-            actionBar = getActivity().getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
 
             mAoDPreference =
                 (SwitchPreferenceCompat) findPreference(Utils.AOD_KEY);
@@ -262,15 +258,5 @@ public class DozeSettings extends PreferenceActivity implements PreferenceFragme
         public void onDestroy() {
             super.onDestroy();
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
