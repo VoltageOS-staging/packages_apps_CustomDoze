@@ -56,8 +56,9 @@
             android:title="@string/aod_setting_title"
             android:summary="@string/aod_setting_summary" />
 
-        <Preference
+        <com.tenx.support.preferences.TenXPreference
             android:key="aod_schedule_preference"
+            tenx:position="middle"
             android:title="@string/aod_schedule_title"
             android:summary="@string/aod_schedule_summary"
             android:dependency="always_on_ambient">
@@ -65,7 +66,7 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.custom.ambient.display"
                 android:targetClass="com.custom.ambient.display.AODSchedule" />
-        </Preference>
+        </com.tenx.support.preferences.TenXPreference>
 
         <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="doze_on_charge"

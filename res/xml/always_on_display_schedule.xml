@@ -16,6 +16,7 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/ambient_doze_brightness_title"
+    xmlns:tenx="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <DropDownPreference
@@ -25,12 +26,14 @@
         android:entryValues="@array/doze_always_on_auto_mode_values"
         android:persistent="false" />
 
-    <Preference
+    <com.tenx.support.preferences.TenXPreference
         android:key="doze_always_on_auto_since"
+        tenx:position="middle"
         android:title="@string/always_on_display_start_time_title" />
 
-    <Preference
+    <com.tenx.support.preferences.TenXPreference
         android:key="doze_always_on_auto_till"
+        tenx:position="bottom"
         android:title="@string/always_on_display_end_time_title" />
 
     <com.android.settingslib.widget.FooterPreference
