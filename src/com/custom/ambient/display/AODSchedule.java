@@ -28,12 +28,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.TimePicker;
 
-import androidx.preference.DropDownPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.collapsingtoolbar.R;
+
+import com.tenx.support.preferences.SecureSettingListPreference;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;
@@ -81,7 +82,7 @@ public class AODSchedule extends CollapsingToolbarBaseActivity implements Prefer
 
         private Context mContext;
 
-        private DropDownPreference mModePref;
+        private SecureSettingListPreference mModePref;
         private Preference mSincePref;
         private Preference mTillPref;
 
@@ -101,7 +102,7 @@ public class AODSchedule extends CollapsingToolbarBaseActivity implements Prefer
 
             int mode = Settings.Secure.getIntForUser(resolver,
                     MODE_KEY, MODE_DISABLED, UserHandle.USER_CURRENT);
-            mModePref = (DropDownPreference) findPreference(MODE_KEY);
+            mModePref = (SecureSettingListPreference) findPreference(MODE_KEY);
             mModePref.setValue(String.valueOf(mode));
             mModePref.setSummary(mModePref.getEntry());
             mModePref.setOnPreferenceChangeListener(this);

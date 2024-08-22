@@ -19,8 +19,9 @@
     xmlns:tenx="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <DropDownPreference
+    <com.tenx.support.preferences.SecureSettingListPreference
         android:key="doze_always_on_auto_mode"
+        tenx:position="top"
         android:title="@string/always_on_display_schedule_title"
         android:entries="@array/doze_always_on_auto_mode_entries"
         android:entryValues="@array/doze_always_on_auto_mode_values"
