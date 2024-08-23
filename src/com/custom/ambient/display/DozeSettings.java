@@ -20,7 +20,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
-import androidx.preference.PreferenceCategory;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
@@ -29,6 +28,7 @@ import androidx.preference.PreferenceFragment;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.collapsingtoolbar.R;
 
+import com.tenx.support.preferences.TenXPreferenceCategory;
 import com.tenx.support.preferences.SwitchPreferenceCompat;
 import com.tenx.support.preferences.SystemSettingSeekBarPreference;
 import com.tenx.support.preferences.SystemSettingSwitchPreference;
@@ -67,9 +67,9 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
 
         private Context mContext;
 
-        private static final String KEY_CATEGORY_DOUBLE_TAP = "double_tap";
+        private static final String KEY_CATEGORY_GESTURES = "gestures";
 
-        private PreferenceCategory mDoubleTapCategory;
+        private TenXPreferenceCategory mGesturesCategory;
 
         private SwitchPreferenceCompat mAoDPreference;
         private SwitchPreferenceCompat mAmbientDisplayPreference;
@@ -95,21 +95,23 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
             mDozeOnChargePreference =
                 (SecureSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
 
-            mDoubleTapCategory =
-                (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
+            mGesturesCategory =
+                (TenXPreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
             mDoubleTapPreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.DOUBLE_TAP_KEY);
 
             if (Utils.isTapToWakeAvailable(mContext)) {
                 mDoubleTapPreference.setOnPreferenceChangeListener(this);
             } else {
-                getPreferenceScreen().removePreference(mDoubleTapCategory);
+                if (mGesturesCategory != null) {
+                    mGesturesCategory.removePreference(mDoubleTapPreference);
+                }
             }
 
             mMusicTickerPreference =
                 (SecureSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
-            mDoubleTapCategory =
-                (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
+            mGesturesCategory =
+                (TenXPreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
 
             if (Utils.isAoDAvailable(mContext)) {
                 mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
