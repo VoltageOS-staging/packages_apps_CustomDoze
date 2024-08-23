@@ -82,7 +82,7 @@
             android:title="@string/ambient_display_notifications"
             android:summary="@string/ambient_display_summary" />
 
-        <com.tenx.support.preferences.SystemSettingSwitchPreference
+        <com.tenx.support.preferences.SecureSettingSwitchPreference
             android:key="pulse_on_new_tracks"
             tenx:position="bottom"
             android:defaultValue="true"

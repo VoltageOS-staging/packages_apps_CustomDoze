@@ -77,7 +77,7 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
         private SwitchPreferenceCompat mHandwavePreference;
         private SwitchPreferenceCompat mPocketPreference;
         private SecureSettingSwitchPreference mDozeOnChargePreference;
-        private SystemSettingSwitchPreference mMusicTickerPreference;
+        private SecureSettingSwitchPreference mMusicTickerPreference;
         private SystemSettingSeekBarPreference mDozeBrightness;
         private SystemSettingSeekBarPreference mPulseBrightness;
         private SystemSettingSwitchPreference mDoubleTapPreference;
@@ -107,7 +107,7 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
             }
 
             mMusicTickerPreference =
-                (SystemSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
+                (SecureSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
             mDoubleTapCategory =
                 (PreferenceCategory) findPreference(KEY_CATEGORY_DOUBLE_TAP);
 
