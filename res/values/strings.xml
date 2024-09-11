@@ -84,4 +84,7 @@
     <string name="aod_schedule_title">AOD Schedule</string>
     <string name="aod_schedule_summary">Set your Always-On Display schedule</string>
 
+    <!-- Ambient Display Swipe Gesture -->
+    <string name="ambient_swipe_title">Swipe</string>
+    <string name="ambient_swipe_summary">Allow waking the device by swiping up or down when the device is dozing</string>
 </resources>

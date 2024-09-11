@@ -98,8 +98,15 @@
         android:title="@string/gestures_title" >
 
         <com.tenx.support.preferences.SystemSettingSwitchPreference
-            android:key="doze_trigger_doubletap"
+            android:key="doze_ambient_swipe"
             tenx:position="top"
+            android:title="@string/ambient_swipe_title"
+            android:summary="@string/ambient_swipe_summary"
+            android:defaultValue="true" />
+
+        <com.tenx.support.preferences.SystemSettingSwitchPreference
+            android:key="doze_trigger_doubletap"
+            tenx:position="middle"
             android:defaultValue="false"
             android:title="@string/doze_double_tap_title"
             android:summary="@string/doze_double_tap_summary" />
