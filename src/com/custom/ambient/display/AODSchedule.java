@@ -34,7 +34,7 @@ import androidx.preference.PreferenceFragment;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.collapsingtoolbar.R;
 
-import com.tenx.support.preferences.SecureSettingListPreference;
+import com.voltage.support.preferences.SecureSettingListPreference;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalTime;

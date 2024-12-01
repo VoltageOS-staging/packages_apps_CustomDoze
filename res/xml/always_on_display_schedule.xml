@@ -16,28 +16,24 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/ambient_doze_brightness_title"
-    xmlns:tenx="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.tenx.support.preferences.SecureSettingListPreference
+    <com.voltage.support.preferences.SecureSettingListPreference
         android:key="doze_always_on_auto_mode"
-        tenx:position="top"
         android:title="@string/always_on_display_schedule_title"
         android:entries="@array/doze_always_on_auto_mode_entries"
         android:entryValues="@array/doze_always_on_auto_mode_values"
         android:persistent="false" />
 
-    <com.tenx.support.preferences.TenXPreference
+    <Preference
         android:key="doze_always_on_auto_since"
-        tenx:position="middle"
         android:title="@string/always_on_display_start_time_title" />
 
-    <com.tenx.support.preferences.TenXPreference
+    <Preference
         android:key="doze_always_on_auto_till"
-        tenx:position="bottom"
         android:title="@string/always_on_display_end_time_title" />
 
-    <com.android.settingslib.widget.FooterPreference
+    <Preference
         android:key="doze_always_on_footer"
         android:title="@string/doze_always_on_text"
         android:selectable="false"/>

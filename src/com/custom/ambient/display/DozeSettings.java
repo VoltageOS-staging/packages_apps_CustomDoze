@@ -24,15 +24,15 @@ import android.view.MenuItem;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.collapsingtoolbar.R;
 
-import com.tenx.support.preferences.TenXPreferenceCategory;
-import com.tenx.support.preferences.SwitchPreferenceCompat;
-import com.tenx.support.preferences.SystemSettingSeekBarPreference;
-import com.tenx.support.preferences.SystemSettingSwitchPreference;
-import com.tenx.support.preferences.SecureSettingSwitchPreference;
+import com.voltage.support.preferences.SystemSettingSeekBarPreference;
+import com.voltage.support.preferences.SystemSettingSwitchPreference;
+import com.voltage.support.preferences.SecureSettingSwitchPreference;
 
 public class DozeSettings extends CollapsingToolbarBaseActivity implements PreferenceFragment.OnPreferenceStartFragmentCallback {
 
@@ -69,7 +69,7 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
 
         private static final String KEY_CATEGORY_GESTURES = "gestures";
 
-        private TenXPreferenceCategory mGesturesCategory;
+        private PreferenceCategory mGesturesCategory;
 
         private SwitchPreferenceCompat mAoDPreference;
         private SwitchPreferenceCompat mAmbientDisplayPreference;
@@ -96,7 +96,7 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
                 (SecureSettingSwitchPreference) findPreference(Utils.AOD_CHARGE_KEY);
 
             mGesturesCategory =
-                (TenXPreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
+                (PreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
             mDoubleTapPreference =
                 (SystemSettingSwitchPreference) findPreference(Utils.DOUBLE_TAP_KEY);
 
@@ -111,7 +111,7 @@ public class DozeSettings extends CollapsingToolbarBaseActivity implements Prefe
             mMusicTickerPreference =
                 (SecureSettingSwitchPreference) findPreference(Utils.MUSIC_TICKER_KEY);
             mGesturesCategory =
-                (TenXPreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
+                (PreferenceCategory) findPreference(KEY_CATEGORY_GESTURES);
 
             if (Utils.isAoDAvailable(mContext)) {
                 mAoDPreference.setChecked(Utils.isAoDEnabled(mContext));
